@@ -33,7 +33,7 @@ public class MapGenerator : MonoBehaviour
                 Vector2 hexCoords = GetHexCoords(x, z);
 
                 Vector3 position = new Vector3(hexCoords.x, 0, hexCoords.y);
-                GameObject tile = Instantiate(_tilePrefab, position, Quaternion.identity);
+                GameObject tile = Instantiate(_tilePrefab, position, Quaternion.Euler(90, 0, 0));
             }
     
         }
