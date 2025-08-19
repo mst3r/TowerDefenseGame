@@ -78,14 +78,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c23d1b38f11fff429c7ece861814990, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8113488958159485094}
+      addedObject: {fileID: -407141156443505620}
   m_SourcePrefab: {fileID: 100100000, guid: 6c23d1b38f11fff429c7ece861814990, type: 3}
 --- !u!1 &987549577973235890 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c23d1b38f11fff429c7ece861814990, type: 3}
   m_PrefabInstance: {fileID: 105010825191996899}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8113488958159485094
+--- !u!114 &-407141156443505620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,15 +94,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 987549577973235890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889a4ac508b54a94aa424e6b92be6120, type: 3}
+  m_Script: {fileID: 11500000, guid: 205cf76d7655a1440ae700b281dca6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapWitdth: 30
-  _mapHight: 30
-  _tileSize: 3
-  _grassTilePrefab: {fileID: 919132149155446097, guid: 6c23d1b38f11fff429c7ece861814990, type: 3}
-  _treeTilePrefab: {fileID: 919132149155446097, guid: cbbf4c10961e6b64aa13ef2a9cb9e458, type: 3}
-  _noiseSeed: -1
-  _noiseFrequency: 10
-  _noiseThresgold: 0.35
-  _treesThreshold: 0.6
+  isBuildable: 1
+  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  selectedColor: {r: 0, g: 1, b: 0, a: 1}

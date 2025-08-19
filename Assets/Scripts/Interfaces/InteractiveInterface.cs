@@ -5,5 +5,7 @@ using UnityEngine;
 public interface IInteractable
 {
     void OnClick();
-    void OnDeselected(); 
+    void OnDeselected();
+    void OnHoverEnter();
+    void OnHoverExit();
 }

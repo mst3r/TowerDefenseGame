@@ -51,7 +51,7 @@ public class MapGenerator : MonoBehaviour
                 GameObject prefab = _grassTilePrefab;
 
                 //if the noiseValue is less that the threshold, do not spwwan a tile, just contirnue
-                if(noiseValue < _noiseThresgold) continue;
+                if (noiseValue < _noiseThresgold) continue;
 
                 //if the noiseValue is above the Threshold, make the the trees instead
                 if (noiseValue > _treesThreshold) prefab = _treeTilePrefab;
@@ -59,7 +59,13 @@ public class MapGenerator : MonoBehaviour
                 //only instantiate the tile if its not water
                 GameObject tile = Instantiate(prefab, position, Quaternion.Euler(90, 0, 0));
             }
-    
+
+        }
+        PlayerControlls playerController = FindObjectOfType<PlayerControlls>();
+        if (playerController != null)
+        {
+            playerController.minBounds = Vector2.zero;
+            playerController.maxBounds = new Vector2(_mapWitdth, _mapHight);
         }
     }
 }
