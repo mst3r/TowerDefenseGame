@@ -10,6 +10,8 @@ public class EnemySpawners : MonoBehaviour
     private float sideThree;
     private float sideFour;
 
+    public Transform Transform;
+
     //public MapGenerator MapGenerator;
 
     public GameObject EnemySpawner;
@@ -29,15 +31,35 @@ public class EnemySpawners : MonoBehaviour
         Vector3 SpawnPos3 = new Vector3(mapHeight, 1f, sideThree);
         Vector3 SpawnPos4 = new Vector3(sideFour, 1f, mapWidth);
 
+        /*
         Instantiate(EnemySpawner, SpawnPos1, Quaternion.identity);
         Instantiate(EnemySpawner, SpawnPos2, Quaternion.identity);
         Instantiate(EnemySpawner, SpawnPos3, Quaternion.identity);
         Instantiate(EnemySpawner, SpawnPos4, Quaternion.identity);
+        */
+
+        SpawnTowers(SpawnPos1, SpawnPos2, SpawnPos3, SpawnPos4);
+
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SpawnTowers(Vector3 SpawnPos1, Vector3 SpawnPos2, Vector3 SpawnPos3, Vector3 SpawnPos4)
+    {
+        Vector3[] spawnPositions = { SpawnPos1, SpawnPos2, SpawnPos3, SpawnPos4 }; 
+
+        foreach (Vector3 pos in spawnPositions)
+        {
+            GameObject EnemyTower = Instantiate(EnemySpawner, pos, Quaternion.identity);
+
+            EnemyTower.transform.LookAt(Transform);
+        }
     }
 }
