@@ -18,18 +18,20 @@ public class EnemySpawners : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        mapHeight = 50f;
-        mapWidth = 60f;
+        mapHeight = 30f;
+        mapWidth = 35f;
 
-        sideOne = Random.Range(0f, mapHeight);
-        sideTwo = Random.Range(0f, mapWidth);
-        sideThree = Random.Range(0f, mapHeight);
-        sideFour = Random.Range(0f, mapWidth);
+        sideOne = Random.Range(0f, mapHeight - 1);
+        sideTwo = Random.Range(0f, mapWidth - 1);
+        sideThree = Random.Range(0f, mapHeight - 1);
+        sideFour = Random.Range(0f, mapWidth - 1);
+        //Sets a random spawn point along the edge of the map
 
         Vector3 SpawnPos1 = new Vector3(0f, 1f, sideOne);
         Vector3 SpawnPos2 = new Vector3(sideTwo, 1f, 0f);
         Vector3 SpawnPos3 = new Vector3(mapHeight, 1f, sideThree);
         Vector3 SpawnPos4 = new Vector3(sideFour, 1f, mapWidth);
+        //Creates a Vector3 spawn position to spawn the spawners 
 
         /*
         Instantiate(EnemySpawner, SpawnPos1, Quaternion.identity);
@@ -39,7 +41,7 @@ public class EnemySpawners : MonoBehaviour
         */
 
         SpawnTowers(SpawnPos1, SpawnPos2, SpawnPos3, SpawnPos4);
-
+        //Spawns a tower at each location
 
 
 

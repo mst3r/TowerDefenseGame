@@ -4,6 +4,8 @@ public class HomeBase : MonoBehaviour
 {
 
     [SerializeField] private float baseHealth = 100f;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

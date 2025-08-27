@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &22242282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22242283}
+  m_Layer: 0
+  m_Name: BaseSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &22242283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22242282}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15, y: 1, z: 17.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapWitdth: 30
   _mapHight: 30
-  _tileSize: 2
+  _tileSize: 1.15
   _grassTilePrefab: {fileID: 8619622140385358659, guid: c71ae00c33c168c448f41e8fa726ddde, type: 3}
   _treeTilePrefab: {fileID: 8619622140385358659, guid: 8d5ed5ef36b5eb94eb818dbbab069c08, type: 3}
   _noiseSeed: -1
@@ -682,7 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7015ae76f8393c648b8b18770d40a224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 1766123983231631432, guid: c60d52e1278d80b48a1260ef25be2998, type: 3}
+  Transform: {fileID: 22242283}
   EnemySpawner: {fileID: 7064876798847665624, guid: cea61df1ef9170848bc712d6db356eda, type: 3}
 --- !u!4 &1916218270
 Transform:
@@ -726,3 +757,4 @@ SceneRoots:
   - {fileID: 1015237288}
   - {fileID: 1916218270}
   - {fileID: 1046407791}
+  - {fileID: 22242283}
