@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Defender
+  - Enemy
+  - HomeBase
   layers:
   - Default
   - TransparentFX
