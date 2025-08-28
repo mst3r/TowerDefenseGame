@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class PlayerControlls : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
-
     [SerializeField] private Camera _camera;
 
     [Header("Movement Settings")]
@@ -27,96 +26,24 @@ public class PlayerControlls : MonoBehaviour
 
 
     private Vector3 _lastMousePos;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
 
-    public GameObject defenderPrefab;   // Assign turret prefab
-    public LayerMask placementMask;     // What we can place on (e.g., ground layer)
-   
-    private IInteractable lastHovered;
-    private IInteractable lastClicked;
-
+    // Update is called once per frame
     void Update()
     {
-        HandleHover();
-        HandleClick();
         CheckMovementInput();
         HandleKeyboardImput();
         HandleEdgeScroll();
         HandleZoom();
         ClampCameraToBounds();
         HandleRotation();
-
-        if (Input.GetMouseButtonDown(0)) // Left click
-        {
-            PlaceDefender();
-        }
     }
 
-    private void HandleHover()
-    {
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            IInteractable interactable = hit.transform.GetComponent<IInteractable>();
-
-            if (interactable != null)
-            {
-                if (lastHovered != interactable)
-                {
-                    // Exit old hover
-                    if (lastHovered != null) lastHovered.OnHoverExit();
-
-                    // Enter new hover
-                    interactable.OnHoverEnter();
-                    lastHovered = interactable;
-                }
-            }
-        }
-        else
-        {
-            // If nothing hit, clear hover
-            if (lastHovered != null)
-            {
-                lastHovered.OnHoverExit();
-                lastHovered = null;
-            }
-        }
-    }
-
-    private void HandleClick()
-    {
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (lastHovered != null)
-            {
-                // deselect old clicked tile if different
-                if (lastClicked != null && lastClicked != lastHovered)
-                {
-                    lastClicked.OnDeselected();
-                }
-
-                lastHovered.OnClick();
-                lastClicked = lastHovered;
-            }
-        }
-    }
-
-    void PlaceDefender()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, placementMask))
-        {
-            // Snap position to whole numbers (grid-like placement)
-            Vector3 placePos = new Vector3(
-                Mathf.Round(hit.point.x),
-                hit.point.y,
-                Mathf.Round(hit.point.z)
-            );
-
-            Instantiate(defenderPrefab, placePos, Quaternion.identity);
-        }
-    }
 
     private void CheckMovementInput()
     {
@@ -233,4 +160,3 @@ public class PlayerControlls : MonoBehaviour
         }
     }
 }
-
