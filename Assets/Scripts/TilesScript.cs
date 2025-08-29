@@ -8,6 +8,7 @@ public class TilesScript : MonoBehaviour, IInteractable
     public bool isBuildable = true;   // e.g. grass = buildable, tree = not
     public Color hoverColor = Color.yellow;
     public Color selectedColor = Color.green;
+    public Color pathColour = Color.grey;
     private Color originalColor;
 
     void Awake()
@@ -35,7 +36,11 @@ public class TilesScript : MonoBehaviour, IInteractable
 
     public void OnDeselected()
     {
+        
+        
         rend.material.color = originalColor;
+        
+        
     }
 
     public void OnHoverEnter()
@@ -48,6 +53,22 @@ public class TilesScript : MonoBehaviour, IInteractable
 
     public void OnHoverExit()
     {
-        rend.material.color = originalColor;
+        if (isBuildable)
+        {
+            rend.material.color = originalColor;
+        }
+        
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Path"))
+        {
+            Debug.Log("Collidion Detected");
+            rend.material.color = pathColour;
+            isBuildable = false;
+        }
+    }
+
+
 }

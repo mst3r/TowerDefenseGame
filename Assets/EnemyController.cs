@@ -1,14 +1,25 @@
+using System.Collections;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     public float health = 50f;
     public float speed = 5f;
+    public float fireRate = 2f;
+    private float nextTimeToFire;
 
     public GameObject playerBase;
-    public Transform baseLocation;
+    public GameObject projectile;
 
-    public string state = "NoTowers";
+    public Transform baseLocation;
+    public Transform ProjectileSpawn;
+    public Transform defenderLocation;
+
+
+    public bool Towerstate = false;
+    public bool isFiring = false;
+    
 
 
 
@@ -26,16 +37,26 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == "NoTowers")
+        if (Towerstate == false)
         {
+            gameObject.transform.LookAt(baseLocation); //When moving towards the base it looks at it
             MovetoBase();
         }
         else
         {
+            gameObject.transform.LookAt(defenderLocation); //When attacking the tower it looks at it 
 
+            if (Time.time >= nextTimeToFire)
+            {
+                AttackDefenders();
+                nextTimeToFire = Time.time + fireRate;
+            }
+
+            
         }
     }
 
+   
     public void MovetoBase()
     {
         transform.position = Vector3.MoveTowards(transform.position, baseLocation.position, speed * Time.deltaTime);
@@ -45,15 +66,38 @@ public class EnemyController : MonoBehaviour
     {
         if (other.CompareTag("Defender"))
         {
-            state = "Towers";
+            Debug.Log("TurretFound");
+
+            defenderLocation = other.GetComponent<Transform>(); //Gets the location of the tower currently being fought with 
+            
+            Towerstate = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void AttackDefenders()
     {
-        if (other.CompareTag("Defender"))
+        Instantiate(projectile, ProjectileSpawn.position, ProjectileSpawn.rotation);
+        
+    }
+
+
+    
+    /*private void OnTriggerStay(Collider other)
+    {
+        if (other != null)
         {
-            state = "NoTowers";
+            if (other.CompareTag("Defender"))
+            {
+                Debug.Log("TurretFound");
+                Towerstate = true;
+            }
+        }
+        else
+        {
+            Towerstate = false;
         }
     }
+    */
+
+    
 }

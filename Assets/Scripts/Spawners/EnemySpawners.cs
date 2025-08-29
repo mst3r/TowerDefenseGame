@@ -15,6 +15,9 @@ public class EnemySpawners : MonoBehaviour
     //public MapGenerator MapGenerator;
 
     public GameObject EnemySpawner;
+    public GameObject PathSetter;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,6 +63,7 @@ public class EnemySpawners : MonoBehaviour
         foreach (Vector3 pos in spawnPositions)
         {
             GameObject EnemyTower = Instantiate(EnemySpawner, pos, Quaternion.identity);
+            GameObject pather = Instantiate(PathSetter, pos, Quaternion.identity);
 
             EnemyTower.transform.LookAt(Transform);
         }

@@ -22,6 +22,6 @@ public class SpawningEnemies : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        Instantiate(enemies, spawnPoint);
+        Instantiate(enemies, spawnPoint.position, spawnPoint.rotation );
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - Defender
   - Enemy
   - HomeBase
+  - Tile
+  - Path
+  - BasicProjectile
   layers:
   - Default
   - TransparentFX

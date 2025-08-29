@@ -8,11 +8,15 @@ public class Turret : MonoBehaviour
     [Header("Turret Stats")]
     public float range = 5f;
     public float fireRate = 1f;
+    public float health = 20.0f;
+    public float damage;
     public GameObject bulletPrefab;
     public Transform firePoint;
 
     private float _fireCooldown;
     private Transform _target;
+
+    
 
     void Update()
     {
@@ -33,6 +37,12 @@ public class Turret : MonoBehaviour
                 Shoot();
                 _fireCooldown = 1f / fireRate;
             }
+        }
+
+        if (health <= 0)
+        {
+            
+            Destroy(gameObject);
         }
     }
 
@@ -74,5 +84,24 @@ public class Turret : MonoBehaviour
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
             bullet.SetTarget(_target);
+    }
+
+    void TakeDamge()
+    {
+        health = health - damage;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("BasicProjectile"))
+        {
+            if(other.TryGetComponent<Projectile>(out Projectile component))
+            {
+                damage = component.damage;
+                TakeDamge();
+            }
+
+            Destroy(other.gameObject);
+        }
     }
 }
