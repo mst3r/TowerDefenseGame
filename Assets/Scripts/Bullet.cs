@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (_target != null)
+        if (_target == null)
         {
             Destroy(gameObject);
             return;
@@ -33,14 +33,16 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        /* Enemy enemy = _target.GetComponent<Enemy>();
-           if (enemy != null)
-           {
-               enemy.TakeDamage(damage);
-           }
-           Destroy(gameObject); 
-       }*/
+        if (_target != null && _target.CompareTag("Enemy"))
+        {
+            EnemyController enemy = _target.GetComponent<EnemyController>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+        }
 
+        Destroy(gameObject);
     }
 
 }

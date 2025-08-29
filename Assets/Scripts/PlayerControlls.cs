@@ -28,9 +28,11 @@ public class PlayerControlls : MonoBehaviour
 
     private Vector3 _lastMousePos;
 
+    [Header("Defenders Placement")]
     public GameObject defenderPrefab;   // Assign turret prefab
     public LayerMask placementMask;     // What we can place on (e.g., ground layer)
-   
+    private TilesScript selectedTile;
+
     private IInteractable lastHovered;
     private IInteractable lastClicked;
 
@@ -38,6 +40,7 @@ public class PlayerControlls : MonoBehaviour
     {
         HandleHover();
         HandleClick();
+
         CheckMovementInput();
         HandleKeyboardImput();
         HandleEdgeScroll();
@@ -45,10 +48,6 @@ public class PlayerControlls : MonoBehaviour
         ClampCameraToBounds();
         HandleRotation();
 
-        if (Input.GetMouseButtonDown(0)) // Left click
-        {
-            PlaceDefender();
-        }
     }
 
     private void HandleHover()
@@ -85,38 +84,44 @@ public class PlayerControlls : MonoBehaviour
 
     private void HandleClick()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && lastHovered != null)
         {
-            if (lastHovered != null)
+            // If this tile is the same as the selected one, place defender
+            if (selectedTile == lastHovered as TilesScript)
             {
-                // deselect old clicked tile if different
-                if (lastClicked != null && lastClicked != lastHovered)
-                {
-                    lastClicked.OnDeselected();
-                }
+                PlaceDefender(selectedTile);
+                selectedTile.OnDeselected();
+                selectedTile = null;
+            }
+            else
+            {
+                // Deselect previous tile
+                if (selectedTile != null) selectedTile.OnDeselected();
 
-                lastHovered.OnClick();
-                lastClicked = lastHovered;
+                // Select new one
+                selectedTile = lastHovered as TilesScript;
+                if (selectedTile != null && selectedTile.isBuildable)
+                {
+                    selectedTile.OnClick();
+                }
             }
         }
     }
 
-    void PlaceDefender()
+    private void PlaceDefender(TilesScript tile)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, placementMask))
+        if( tile != null && tile.isBuildable && defenderPrefab != null)
         {
-            // Snap position to whole numbers (grid-like placement)
-            Vector3 placePos = new Vector3(
-                Mathf.Round(hit.point.x),
-                hit.point.y,
-                Mathf.Round(hit.point.z)
-            );
+            Vector3 placePos = tile.transform.position;
+            placePos.y += 0.5f; //lift slightly above tile if needed
 
-            Instantiate(defenderPrefab, placePos, Quaternion.identity);
+            Instantiate(defenderPrefab, placePos, Quaternion.identity );
+
+            tile.isBuildable = false; //Prevent stacking
         }
     }
+
+    //CAMERA STUFF BELOW
 
     private void CheckMovementInput()
     {

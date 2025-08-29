@@ -80,8 +80,18 @@ public class EnemyController : MonoBehaviour
         
     }
 
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
 
+        if (health < 0)
+            Die();
+    }
     
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
     /*private void OnTriggerStay(Collider other)
     {
         if (other != null)

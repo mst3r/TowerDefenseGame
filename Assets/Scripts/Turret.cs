@@ -16,8 +16,6 @@ public class Turret : MonoBehaviour
     private float _fireCooldown;
     private Transform _target;
 
-    
-
     void Update()
     {
        // look for target if none
