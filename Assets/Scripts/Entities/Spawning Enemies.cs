@@ -23,12 +23,15 @@ public class SpawningEnemies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawns <= spawnCap)
+        if (spawns < spawnCap)
         {
             if (Time.time >= nextTimeToSpawn)
             {
                 SpawnEnemies();
                 nextTimeToSpawn = Time.time + spawnRate;
+
+                Debug.Log(spawns);
+
             }
         }
         else
@@ -40,7 +43,8 @@ public class SpawningEnemies : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        Instantiate(enemies, spawnPoint.position, spawnPoint.rotation );
         spawns++;
+        Instantiate(enemies, spawnPoint.position, spawnPoint.rotation );
+        
     }
 }

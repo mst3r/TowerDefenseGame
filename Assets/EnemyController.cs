@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
 
     public bool Towerstate = false;
     public bool isFiring = false;
+    public bool isAtBase = false;
     
 
 
@@ -37,12 +38,12 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Towerstate == false)
+        if (Towerstate == false && isAtBase == false)
         {
             gameObject.transform.LookAt(baseLocation); //When moving towards the base it looks at it
             MovetoBase();
         }
-        else
+        else if (Towerstate == true && isAtBase == false)
         {
             MovetoBase();
             gameObject.transform.LookAt(defenderLocation); //When attacking the tower it looks at it 
@@ -53,6 +54,18 @@ public class EnemyController : MonoBehaviour
                 nextTimeToFire = Time.time + fireRate;
             }
 
+            
+        }
+        else if (isAtBase == true)
+        {
+            gameObject.transform.LookAt(baseLocation);
+
+            if (Time.time >= nextTimeToFire)
+            {
+                
+                AttackDefenders();
+                nextTimeToFire = Time.time + fireRate;
+            }
             
         }
     }
@@ -68,15 +81,17 @@ public class EnemyController : MonoBehaviour
     {
         if (other.CompareTag("Defender"))
         {
-            Debug.Log("TurretFound");
+            //Debug.Log("TurretFound");
 
             defenderLocation = other.GetComponent<Transform>(); //Gets the location of the tower currently being fought with 
             
             Towerstate = true;
         }
 
-        if (other.CompareTag("HomeBase"))
+        if (other.CompareTag("Stop"))
         {
+            //Debug.Log("PlayerBase Found");
+            isAtBase = true;
             gameObject.transform.LookAt(baseLocation);
             AttackDefenders();
         }
@@ -85,6 +100,7 @@ public class EnemyController : MonoBehaviour
     public void AttackDefenders()
     {
         Instantiate(projectile, ProjectileSpawn.position, ProjectileSpawn.rotation);
+        Towerstate = false;
         
     }
 

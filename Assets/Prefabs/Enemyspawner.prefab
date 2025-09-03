@@ -265,3 +265,5 @@ MonoBehaviour:
   enemies: {fileID: 5447117285889195006, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
   spawnPoint: {fileID: 6357407097405145221}
   spawnRate: 3
+  spawnCap: 10
+  spawns: 0
