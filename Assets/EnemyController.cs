@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            MovetoBase();
             gameObject.transform.LookAt(defenderLocation); //When attacking the tower it looks at it 
 
             if (Time.time >= nextTimeToFire)
@@ -60,6 +61,7 @@ public class EnemyController : MonoBehaviour
     public void MovetoBase()
     {
         transform.position = Vector3.MoveTowards(transform.position, baseLocation.position, speed * Time.deltaTime);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,6 +74,12 @@ public class EnemyController : MonoBehaviour
             
             Towerstate = true;
         }
+
+        if (other.CompareTag("HomeBase"))
+        {
+            gameObject.transform.LookAt(baseLocation);
+            AttackDefenders();
+        }
     }
 
     public void AttackDefenders()
@@ -79,6 +87,7 @@ public class EnemyController : MonoBehaviour
         Instantiate(projectile, ProjectileSpawn.position, ProjectileSpawn.rotation);
         
     }
+
 
     public void TakeDamage(float damage)
     {

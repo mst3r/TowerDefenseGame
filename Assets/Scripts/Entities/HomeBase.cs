@@ -5,6 +5,8 @@ public class HomeBase : MonoBehaviour
 
     [SerializeField] private float baseHealth = 100f;
 
+    private float damage;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,14 +17,23 @@ public class HomeBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (baseHealth <= 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(""))
+        if (other.CompareTag("BasicProjectile"))
         {
-            TakeDamage();
+            if (other.TryGetComponent<Projectile>(out Projectile component))
+            {
+                damage = component.damage;
+                TakeDamage();
+            }
+
+            Destroy(other.gameObject);
         }
     }
     //For when enemies attack
