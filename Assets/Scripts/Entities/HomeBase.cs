@@ -3,7 +3,9 @@ using UnityEngine;
 public class HomeBase : MonoBehaviour
 {
 
-    [SerializeField] private float baseHealth = 100f;
+    public float baseHealth = 100f;
+
+    public GameObject gameOverScreen;
 
     private float damage;
 
@@ -20,6 +22,8 @@ public class HomeBase : MonoBehaviour
         if (baseHealth <= 0)
         {
             GameObject.Destroy(gameObject);
+            
+            
         }
     }
 

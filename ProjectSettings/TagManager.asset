@@ -11,6 +11,8 @@ TagManager:
   - Path
   - BasicProjectile
   - Stop
+  - Base
+  - Manager
   layers:
   - Default
   - TransparentFX

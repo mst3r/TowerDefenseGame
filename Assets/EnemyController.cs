@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class EnemyController : MonoBehaviour
 
     public GameObject playerBase;
     public GameObject projectile;
+    public GameObject gamerManager;
 
     public Transform baseLocation;
     public Transform ProjectileSpawn;
     public Transform defenderLocation;
 
+    public GameManager manager;
 
     public bool Towerstate = false;
     public bool isFiring = false;
@@ -28,6 +31,9 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         playerBase = GameObject.FindWithTag("HomeBase");
+        gamerManager = GameObject.FindWithTag("Manager");
+
+        manager = gamerManager.GetComponent<GameManager>();
 
         if (playerBase != null)
         {
@@ -68,6 +74,8 @@ public class EnemyController : MonoBehaviour
             }
             
         }
+
+       
     }
 
    
@@ -110,7 +118,12 @@ public class EnemyController : MonoBehaviour
         health -= damage;
 
         if (health < 0)
+        {
+            manager.AddPoints();
             Die();
+
+        }
+            
     }
     
     private void Die()

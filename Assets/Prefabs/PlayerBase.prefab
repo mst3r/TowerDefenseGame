@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1133275492992776894}
   m_Layer: 0
   m_Name: PlayerBase
-  m_TagString: HomeBase
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 100
+  gameOverScreen: {fileID: 0}
 --- !u!1 &7175744345811775378
 GameObject:
   m_ObjectHideFlags: 0
