@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         }
 
         playerbase.TryGetComponent<HomeBase>(out HomeBase healthComponent);
-        pBaseHealth = healthComponent.baseHealth;
+        pBaseHealth = healthComponent.maxHealth;
 
         if (pBaseHealth <= 0)
         {

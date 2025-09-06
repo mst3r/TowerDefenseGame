@@ -8,13 +8,22 @@ public class Turret : MonoBehaviour
     [Header("Turret Stats")]
     public float range = 5f;
     public float fireRate = 1f;
-    public float health = 20.0f;
-    public float damage;
+    public float maxHealth = 20f;
+    private float currentHealth;
+
+    [SerializeField] private HealthBar healthBar;
+
     public GameObject bulletPrefab;
     public Transform firePoint;
 
     private float _fireCooldown;
     private Transform _target;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.UpdateHealthBar(maxHealth, currentHealth);
+    }
 
     void Update()
     {
@@ -37,7 +46,7 @@ public class Turret : MonoBehaviour
             }
         }
 
-        if (health <= 0)
+        if (maxHealth <= 0)
         {
             
             Destroy(gameObject);
@@ -84,9 +93,16 @@ public class Turret : MonoBehaviour
             bullet.SetTarget(_target);
     }
 
-    void TakeDamge()
+    void TakeDamge(float damage)
     {
-        health = health - damage;
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        healthBar.UpdateHealthBar(maxHealth, currentHealth);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -95,8 +111,7 @@ public class Turret : MonoBehaviour
         {
             if(other.TryGetComponent<Projectile>(out Projectile component))
             {
-                damage = component.damage;
-                TakeDamge();
+                TakeDamge(component.damage);
             }
 
             Destroy(other.gameObject);

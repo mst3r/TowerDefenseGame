@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class EnemyController : MonoBehaviour
 {
     public float health = 50f;
+    private float currentHealth;
     public float speed = 5f;
     public float fireRate = 2f;
     private float nextTimeToFire;
@@ -23,8 +24,8 @@ public class EnemyController : MonoBehaviour
     public bool Towerstate = false;
     public bool isFiring = false;
     public bool isAtBase = false;
-    
 
+    [SerializeField] private HealthBar healthBar;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,6 +40,10 @@ public class EnemyController : MonoBehaviour
         {
             baseLocation = playerBase.transform;
         }
+
+        currentHealth = health;
+
+        healthBar.UpdateHealthBar(health, currentHealth);
     }
 
     // Update is called once per frame
@@ -115,15 +120,15 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        currentHealth -= damage;
 
         if (health < 0)
         {
             manager.AddPoints();
             Die();
-
         }
-            
+
+        healthBar.UpdateHealthBar(health, currentHealth);
     }
     
     private void Die()

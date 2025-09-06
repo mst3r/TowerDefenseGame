@@ -38,6 +38,8 @@ public class PlayerControlls : MonoBehaviour
 
     void Update()
     {
+        if (!PauseMenu.isPaused)
+        {
         HandleHover();
         HandleClick();
 
@@ -46,7 +48,9 @@ public class PlayerControlls : MonoBehaviour
         HandleEdgeScroll();
         HandleZoom();
         ClampCameraToBounds();
-        HandleRotation();
+        HandleRotation();            
+        }
+
 
     }
 

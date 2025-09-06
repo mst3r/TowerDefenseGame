@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class HomeBase : MonoBehaviour
 {
-
-    public float baseHealth = 100f;
+    public float maxHealth = 100f;
+    private float currentHealth;
+    [SerializeField] private HealthBar healthBar;
 
     public GameObject gameOverScreen;
 
@@ -13,13 +14,14 @@ public class HomeBase : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar.UpdateHealthBar(maxHealth, currentHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (baseHealth <= 0)
+        if (maxHealth <= 0)
         {
             GameObject.Destroy(gameObject);
             
@@ -34,7 +36,7 @@ public class HomeBase : MonoBehaviour
             if (other.TryGetComponent<Projectile>(out Projectile component))
             {
                 damage = component.damage;
-                TakeDamage();
+                TakeDamage(component.damage);
             }
 
             Destroy(other.gameObject);
@@ -43,10 +45,22 @@ public class HomeBase : MonoBehaviour
     //For when enemies attack
     //Can check enemy tags for different damage amounts and pass the enemy type into the take damage method
 
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
-        baseHealth--;
+        currentHealth -= damage;
 
+        if (currentHealth <= 0)
+        {
+            GameOver();
+        }
+
+        healthBar.UpdateHealthBar(maxHealth, currentHealth);
         //Can add an effect that displays damage taken in here as well
+    }
+
+    private void GameOver()
+    {
+        gameOverScreen.SetActive(true);
+        Destroy(gameObject);
     }
 }
