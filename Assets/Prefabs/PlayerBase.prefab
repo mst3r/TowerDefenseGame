@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 6326797213174683007}
-  gameOverScreen: {fileID: 8161102249082154730, guid: 1071f91913a8bd2499b85371be13c886, type: 3}
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1911793310231100535
 GameObject:
   m_ObjectHideFlags: 0
