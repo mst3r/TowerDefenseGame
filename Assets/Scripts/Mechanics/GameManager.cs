@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,13 +12,16 @@ public class GameManager : MonoBehaviour
     public float points = 0.0f;
 
     private float pBaseHealth;
+
+    [SerializeField] private TextMeshProUGUI pointsText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Time.timeScale = 1.0f;
 
-       
-        
+        UpdatePointsUI();
+
     }
 
     // Update is called once per frame
@@ -55,5 +59,13 @@ public class GameManager : MonoBehaviour
     public void AddPoints()
     {
         points++;
+        UpdatePointsUI();
+    }
+    private void UpdatePointsUI()
+    {
+        if (pointsText != null)
+        {
+            pointsText.text = "Points: " + points.ToString();
+        }
     }
 }
