@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
 
+        gameOverScreen.SetActive(false);
+        gameWinScreen.SetActive(false);
+
+
         UpdatePointsUI();
 
     }

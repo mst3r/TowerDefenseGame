@@ -3,7 +3,7 @@ using UnityEngine;
 public class HomeBase : MonoBehaviour
 {
     public float maxHealth = 100f;
-    private float currentHealth;
+    private float currentHealth = 100.0f;
 
     public float CurrentHealth => currentHealth;
     [SerializeField] private HealthBar healthBar;
