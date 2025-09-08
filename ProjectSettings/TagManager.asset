@@ -13,6 +13,7 @@ TagManager:
   - Stop
   - Base
   - Manager
+  - Bullet
   layers:
   - Default
   - TransparentFX

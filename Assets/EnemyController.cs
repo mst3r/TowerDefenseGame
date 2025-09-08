@@ -108,6 +108,9 @@ public class EnemyController : MonoBehaviour
             gameObject.transform.LookAt(baseLocation);
             AttackDefenders();
         }
+
+        
+
     }
 
     public void AttackDefenders()
@@ -120,9 +123,10 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        //health -= damage;
         currentHealth -= damage;
 
-        if (health < 0)
+        if (currentHealth <= 0)
         {
             manager.AddPoints();
             Die();
