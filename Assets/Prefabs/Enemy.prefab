@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthbarSprite: {fileID: 8802775526400600330}
+  _reduceSpeed: 2
 --- !u!1 &5447117285889195006
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2469a5c57d73c42846e65b919820fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 5
   speed: 1
   fireRate: 2
   playerBase: {fileID: 0}
