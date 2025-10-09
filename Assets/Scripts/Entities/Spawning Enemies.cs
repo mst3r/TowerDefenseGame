@@ -1,9 +1,11 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class SpawningEnemies : MonoBehaviour
 {
 
     public GameObject enemies;
+    public GameObject enemy2;
     public Transform spawnPoint;
 
     public float spawnRate = 5.0f;
@@ -43,8 +45,22 @@ public class SpawningEnemies : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        spawns++;
-        Instantiate(enemies, spawnPoint.position, spawnPoint.rotation );
+        float enemyToSpawn = Random.Range(0.0f, 10.0f);
+
+        if (enemyToSpawn <= 3)
+        {
+            spawns++;
+            Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+
+        }
+        else if ( enemyToSpawn > 3)
+        {
+            spawns++;
+            Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+        }
+
+
+        
         
     }
 }
