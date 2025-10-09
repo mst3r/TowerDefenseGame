@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
-    public float health = 50f;
+    public float health;
     private float currentHealth;
     public float speed = 5f;
     public float fireRate = 2f;
