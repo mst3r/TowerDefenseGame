@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TilesScript : MonoBehaviour, IInteractable
 {
@@ -11,6 +12,13 @@ public class TilesScript : MonoBehaviour, IInteractable
     public Color pathColour = Color.grey;
     private Color originalColor;
 
+    private PlaceDefender placeDefender;
+
+    void Start()
+    {
+        placeDefender = PlaceDefender.instance;
+    }
+
     void Awake()
     {
         rend = GetComponent<Renderer>();
@@ -22,11 +30,16 @@ public class TilesScript : MonoBehaviour, IInteractable
 
     public void OnClick()
     {
+        var defenderToPlace = placeDefender.AbleToPlaceDefender();
+        if (defenderToPlace == null)
+            return;
+
         if (isBuildable)
         {
-            Debug.Log("Tile clicked — ready to build here.");
+            Debug.Log("Tile clicked — building defender here.");
+            Instantiate(defenderToPlace, transform.position + Vector3.up * 0.5f, Quaternion.identity);
             rend.material.color = selectedColor;
-            // later: open tower build UI
+            isBuildable = false;
         }
         else
         {
@@ -45,6 +58,9 @@ public class TilesScript : MonoBehaviour, IInteractable
 
     public void OnHoverEnter()
     {
+        if (placeDefender.AbleToPlaceDefender() == null)
+            return;
+
         if (isBuildable)
         {
             rend.material.color = hoverColor;
