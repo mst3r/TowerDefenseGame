@@ -38,7 +38,9 @@ public class Bullet : MonoBehaviour
             EnemyController enemy = _target.GetComponent<EnemyController>();
             if (enemy != null)
             {
+                Debug.Log("Damage Called");
                 enemy.TakeDamage(damage);
+                
             }
         }
 

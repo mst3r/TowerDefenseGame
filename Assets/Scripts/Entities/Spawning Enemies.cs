@@ -6,6 +6,8 @@ public class SpawningEnemies : MonoBehaviour
 
     public GameObject enemies;
     public GameObject enemy2;
+    public GameObject enemy3;
+
     public Transform spawnPoint;
 
     public float spawnRate = 5.0f;
@@ -56,7 +58,7 @@ public class SpawningEnemies : MonoBehaviour
         else if ( enemyToSpawn > 3)
         {
             spawns++;
-            Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
         }
 
 

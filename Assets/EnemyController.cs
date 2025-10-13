@@ -126,9 +126,15 @@ public class EnemyController : MonoBehaviour
         //health -= damage;
         currentHealth -= damage;
 
+        //Debug.Log("Damage");
+        //Debug.Log(damage.ToString());
+        //Debug.Log("Health");
+        //Debug.Log(currentHealth.ToString());
+
         if (currentHealth <= 0)
         {
             manager.AddPoints();
+            Debug.Log(currentHealth.ToString());
             Die();
         }
 

@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: {fileID: 5447117285889195006, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
   enemy2: {fileID: 6215418694461399878, guid: 8c48e34d9cda0a745ba333c4d0a92078, type: 3}
+  enemy3: {fileID: 8001308516730136580, guid: a1a2fb6a4643bbb4ba7b120b2b5271ad, type: 3}
   spawnPoint: {fileID: 6357407097405145221}
   spawnRate: 10
   spawnCap: 5
