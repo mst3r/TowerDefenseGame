@@ -4,22 +4,31 @@ using UnityEngine;
 public class SpawningEnemies : MonoBehaviour
 {
 
+    public GameManager GameManager;
+
     public GameObject enemies;
     public GameObject enemy2;
     public GameObject enemy3;
+    public GameObject manager;
 
     public Transform spawnPoint;
 
     public float spawnRate = 5.0f;
     private float nextTimeToSpawn;
-    public float spawnCap = 10f;
-    public float spawns = 0.0f;
+    public float spawnCap;
+    public float spawns;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
+        manager = GameObject.FindWithTag("Manager");
+        GameManager = manager.GetComponent<GameManager>();
+
+        spawnCap = GameManager.spawnCap;
+        spawns = GameManager.spawns;
+
         SpawnEnemies();
         
     }
@@ -34,7 +43,10 @@ public class SpawningEnemies : MonoBehaviour
                 SpawnEnemies();
                 nextTimeToSpawn = Time.time + spawnRate;
 
-                Debug.Log(spawns);
+                GameManager.UpdateSpawncap();
+                spawns = GameManager.spawns;
+
+                //Debug.Log(spawns);
 
             }
         }
@@ -47,22 +59,99 @@ public class SpawningEnemies : MonoBehaviour
 
     public void SpawnEnemies()
     {
-        float enemyToSpawn = Random.Range(0.0f, 10.0f);
-
-        if (enemyToSpawn <= 3)
+        if (GameManager.playerLevel == 0)
         {
-            spawns++;
-            Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+            float enemyToSpawn = Random.Range(0.0f, 10.0f);
+
+            if (enemyToSpawn <= 1)
+            {
+                spawns++;
+                Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+
+            }
+            else if (enemyToSpawn >= 2)
+            {
+                spawns++;
+                Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+            }
+        }
+        // Easiest level [Basic enemies spawn and 10% change for fast 
+
+        if (GameManager.playerLevel == 5)
+        {
+            float enemyToSpawn = Random.Range(0.0f, 10.0f);
+
+            if (enemyToSpawn <= 3)
+            {
+                spawns++;
+                Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+
+            }
+            else if (enemyToSpawn >= 6)
+            {
+                spawns++;
+                Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+            }
+            else if (enemyToSpawn > 3 && enemyToSpawn < 6)
+            {
+                spawns++;
+                Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+            }
+            
+        }
+        //Basic level [Basic enemies 60%, fast enemies 30%, tanks 10%
+
+        if (GameManager.playerLevel == 15)
+        {
+            float enemyToSpawn = Random.Range(0.0f, 10.0f);
+
+            if (enemyToSpawn < 5)
+            {
+                spawns++;
+                Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+
+            }
+            else if (enemyToSpawn > 8 )
+            {
+                spawns++;
+                Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+            }
+            else if (enemyToSpawn > 5 && enemyToSpawn <= 8)
+            {
+                spawns++;
+                Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+            }
 
         }
-        else if ( enemyToSpawn > 3)
+        //Medium Level [Basic enemies 20%, fast enemies 50%, tanks 30%
+
+        if (GameManager.playerLevel == 30)
         {
-            spawns++;
-            Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+            float enemyToSpawn = Random.Range(0.0f, 10.0f);
+
+            if (enemyToSpawn <= 3)
+            {
+                spawns++;
+                Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+
+            }
+            else if (enemyToSpawn > 9)
+            {
+                spawns++;
+                Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+            }
+            else if (enemyToSpawn > 3 && enemyToSpawn <= 9)
+            {
+                spawns++;
+                Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+            }
+
         }
+        //Hard Level [Basic enemies 10%, fast enemies 30%, tanks 60%
 
 
-        
-        
+
+
+
     }
 }

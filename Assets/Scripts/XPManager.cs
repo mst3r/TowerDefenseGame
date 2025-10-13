@@ -11,6 +11,10 @@ public class XPManager : MonoBehaviour
     int currentlevel, totalXP;
     int previousLevelsXP, nextLevelsXP;
 
+    public GameManager GameManager;
+
+    public GameObject manager;
+
     [Header("Interface")]
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] TextMeshProUGUI xpText;
@@ -19,6 +23,9 @@ public class XPManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        manager = GameObject.FindWithTag("Manager");
+        GameManager = manager.GetComponent<GameManager>();
+
         UpdateLevel();
     }
 
@@ -28,6 +35,29 @@ public class XPManager : MonoBehaviour
         //for testing
         if(Input.GetMouseButtonDown(0)) 
             AddXP(5);
+
+        if (currentlevel == 5)
+        {
+            GameManager.spawnCap = 30.0f;
+            GameManager.playerLevel = currentlevel;
+        }
+
+        if (currentlevel == 15)
+        {
+            GameManager.spawnCap = 40.0f;
+            GameManager.playerLevel = currentlevel;
+        }
+
+        if (currentlevel == 30)
+        {
+            GameManager.spawnCap = 50.0f;
+            GameManager.playerLevel = currentlevel;
+        }
+
+        if (currentlevel >= 50)
+        {
+            GameManager.playerLevel = currentlevel;
+        }
     }
 
     public void AddXP(int amount)
@@ -50,6 +80,9 @@ public class XPManager : MonoBehaviour
     {
         previousLevelsXP = (int)xpCurve.Evaluate(currentlevel);
         nextLevelsXP = (int)xpCurve.Evaluate(currentlevel + 1);
+
+        GameManager.ResetSpawnCap();
+
         UpdateInterface();
     }
 

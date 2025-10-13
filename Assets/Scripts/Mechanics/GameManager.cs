@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject playerbase;
 
     public float points = 0.0f;
+    public float spawnCap = 25.0f;
+    public float spawns = 0.0f;
+    public float playerLevel = 0.0f;
 
     private float pBaseHealth;
 
@@ -45,7 +48,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.0f;
         }
 
-        if (points >= 20.0f)
+        if (playerLevel >= 50.0f)
         {
             gameWinScreen.SetActive(true);
             Time.timeScale = 0.0f;
@@ -71,5 +74,15 @@ public class GameManager : MonoBehaviour
         {
             pointsText.text = "Points: " + points.ToString();
         }
+    }
+
+    public void UpdateSpawncap()
+    {
+        spawns++;
+    }
+
+    public void ResetSpawnCap()
+    {
+        spawns = 0;
     }
 }
