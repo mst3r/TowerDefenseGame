@@ -95,5 +95,8 @@ public class XPManager : MonoBehaviour
         xpText.text = start + " xp /" + end + " xp";
         xpFill.fillAmount = (float)start / (float)end;
     }
-
+    public int GetLevel()
+    {
+        return currentlevel;
+    }
 }   
