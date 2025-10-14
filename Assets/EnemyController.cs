@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -35,6 +36,25 @@ public class EnemyController : MonoBehaviour
         gamerManager = GameObject.FindWithTag("Manager");
 
         manager = gamerManager.GetComponent<GameManager>();
+
+        float DamageRange1 = Random.Range(10.0f, 20.0f);
+        float DamageRange2 = Random.Range(20.0f, 40.0f);
+        float DamageRange3 = Random.Range(40.0f, 60.0f);
+        //Random numbers for random health increases
+
+        if (manager.playerLevel >= 5 && manager.playerLevel < 15)
+        {
+            health = health + DamageRange1;
+        }
+        if (manager.playerLevel >= 15 && manager.playerLevel < 30)
+        {
+            health = health + DamageRange2;
+        }
+        if (manager.playerLevel >= 30)
+        {
+            health = health + DamageRange3;
+        }
+        //Based on the players level, the health of the enemies will scale accordingly
 
         if (playerBase != null)
         {
