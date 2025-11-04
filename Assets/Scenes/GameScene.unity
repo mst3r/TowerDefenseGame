@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 379718787}
   - component: {fileID: 379718788}
   - component: {fileID: 379718789}
+  - component: {fileID: 379718790}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Manager
@@ -948,6 +949,21 @@ MonoBehaviour:
   Defender1: {fileID: 4143332654238479557, guid: e77d56d5a8b296945a24c433f01950f0, type: 3}
   Defender2: {fileID: 4143332654238479557, guid: 7562d936c5995124ba7f4abe97725b72, type: 3}
   Defender3: {fileID: 4143332654238479557, guid: 1135a673ce59bb643b10d9dc45361d72, type: 3}
+--- !u!114 &379718790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379718785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c136e784c481a274e83188cd234492eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DirectionalLight: {fileID: 410087040}
+  Preset: {fileID: 11400000, guid: 0178e1b5ba5f9da45813a83267b92e1d, type: 2}
+  TimeofDay: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
