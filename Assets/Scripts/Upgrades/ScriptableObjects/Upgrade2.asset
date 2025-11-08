@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c40beff9d031d4f99bbf826889ef2a, type: 3}
   m_Name: Upgrade2
   m_EditorClassIdentifier: 
-  upgradeName: Upgrade2
+  upgradeName: Health
   description: Health
-  unlockLevel: 10
+  unlockLevel: 20
   cost: 50
   statMultiplier: 1.2
   icon: {fileID: 0}
