@@ -238,6 +238,7 @@ MonoBehaviour:
   range: 5
   fireRate: 2
   maxHealth: 100
+  defenderType: Wyvern
   healthBar: {fileID: 5967298833393514228}
   bulletPrefab: {fileID: 5425317299469905897, guid: 62b3799832f716a428536e25c48f9471, type: 3}
   firePoint: {fileID: 7978440117288050183}

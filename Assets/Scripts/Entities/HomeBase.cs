@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class HomeBase : MonoBehaviour
 {
+
+    [Header("Defender Type")]
+    public string defenderType = "Tree";
+
     public float maxHealth = 100f;
     private float currentHealth = 100.0f;
 
@@ -12,12 +16,16 @@ public class HomeBase : MonoBehaviour
 
     private float damage;
 
+    [Header("Visual Upgrade")]
+    public int upgradeLevel = 0;  // Starts 0, +1 per upgrade
+    private LineRenderer outline; // Glow line
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(maxHealth, currentHealth);
+        CreateOutline();  // NEW
     }
 
     // Update is called once per frame
@@ -64,5 +72,46 @@ public class HomeBase : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
         Destroy(gameObject);
+    }
+
+    void CreateOutline()
+    {
+        outline = gameObject.AddComponent<LineRenderer>();
+        outline.material = new Material(Shader.Find("Sprites/Default"));  // Or custom glow shader
+        outline.startWidth = 0.1f;
+        outline.endWidth = 0.1f;
+        outline.useWorldSpace = true;
+        outline.positionCount = 100;  // Smooth circle
+        UpdateOutline();  // Initial
+    }
+
+    public void UpgradeVisual()  // Call from ApplyUpgrade
+    {
+        upgradeLevel++;
+        UpdateOutline();
+    }
+
+    void UpdateOutline()
+    {
+        if (outline == null) return;
+
+        // Level colors (nature theme!)
+        Color[] colors = {
+        Color.clear,      // Lv0: No glow
+        Color.green,      // Lv1
+        Color.cyan,       // Lv2: Blue-ish
+        Color.yellow,     // Lv3: Gold
+        new Color(1,0,1)  // Lv4: Purple
+    };
+        outline.startColor = colors[Mathf.Clamp(upgradeLevel, 0, colors.Length - 1)];
+        outline.endColor = outline.startColor;
+
+        // Animated pulsing glow
+        float radius = 0.5f + upgradeLevel * 0.1f;  // Bigger per level
+        for (int i = 0; i < 100; i++)
+        {
+            float angle = i / 100f * Mathf.PI * 2;
+            outline.SetPosition(i, transform.position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)) * radius);
+        }
     }
 }

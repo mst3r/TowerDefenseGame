@@ -1635,6 +1635,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1760,6 +1761,66 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 330585546}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 215
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &351413887
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,7 +4254,14 @@ MonoBehaviour:
   upgrades:
   - {fileID: 11400000, guid: 80a0a1dadd188094a9ee0f170203bbf1, type: 2}
   - {fileID: 11400000, guid: dc37af15fd1e39d4d843ed9c91921ebc, type: 2}
+  - {fileID: 11400000, guid: 744fdab85e76a5f42b1bc7881c187d76, type: 2}
   - {fileID: 11400000, guid: 4d515e9db78284c489b8f8f6846cc2c4, type: 2}
+  - {fileID: 11400000, guid: 96d25ef02fc3c094c97ac45d5117e4bf, type: 2}
+  - {fileID: 11400000, guid: bfb1ea09841bbab49b3742a5f7af1018, type: 2}
+  - {fileID: 11400000, guid: 7a650ffec1b9b584f81d1533c000aaee, type: 2}
+  - {fileID: 11400000, guid: 02ae33af55730bf4c9924a3c5060d7f2, type: 2}
+  - {fileID: 11400000, guid: a2776eaf67652bc4b992b533fdc365c4, type: 2}
+  - {fileID: 11400000, guid: f459a2eb6b73b4b43a601d9cca5a82b8, type: 2}
   defenderShopParent: {fileID: 755838041}
   defenderButtonPrefab: {fileID: 1748868505288610667, guid: 93f7eec3a67992b44bb12e356890c27d, type: 3}
   upgradeShopParent: {fileID: 517780714}
