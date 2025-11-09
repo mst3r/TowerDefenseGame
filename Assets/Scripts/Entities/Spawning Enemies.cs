@@ -7,8 +7,19 @@ public class SpawningEnemies : MonoBehaviour
     public GameManager GameManager;
 
     public GameObject enemies;
+    public GameObject Chopper2;
+    public GameObject Chopper3;
+
     public GameObject enemy2;
+    public GameObject Tank2;
+    public GameObject Tank3;
+
     public GameObject enemy3;
+    public GameObject Drone2;
+    public GameObject Drone3;
+    
+
+
     public GameObject manager;
 
     public Transform spawnPoint;
@@ -62,17 +73,46 @@ public class SpawningEnemies : MonoBehaviour
         if (GameManager.playerLevel == 0)
         {
             float enemyToSpawn = Random.Range(0.0f, 10.0f);
+            float type = Random.Range(0, 3);
 
             if (enemyToSpawn <= 1)
             {
-                spawns++;
-                Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+                if(type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Drone2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Drone3, spawnPoint.position, spawnPoint.rotation);
+                }
+                
 
             }
             else if (enemyToSpawn >= 2)
             {
-                spawns++;
-                Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Chopper2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Chopper3, spawnPoint.position, spawnPoint.rotation);
+                }
+                
             }
         }
         // Easiest level [Basic enemies spawn and 10% change for fast 
@@ -80,22 +120,62 @@ public class SpawningEnemies : MonoBehaviour
         if (GameManager.playerLevel == 5)
         {
             float enemyToSpawn = Random.Range(0.0f, 10.0f);
+            float type = Random.Range(0, 3);
 
             if (enemyToSpawn <= 3)
             {
-                spawns++;
-                Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Drone2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Drone3, spawnPoint.position, spawnPoint.rotation);
+                }
 
             }
             else if (enemyToSpawn >= 6)
             {
-                spawns++;
-                Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Chopper2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Chopper3, spawnPoint.position, spawnPoint.rotation);
+                }
             }
             else if (enemyToSpawn > 3 && enemyToSpawn < 6)
             {
-                spawns++;
-                Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Tank2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Tank3, spawnPoint.position, spawnPoint.rotation);
+                }
             }
             
         }
@@ -104,22 +184,62 @@ public class SpawningEnemies : MonoBehaviour
         if (GameManager.playerLevel == 15)
         {
             float enemyToSpawn = Random.Range(0.0f, 10.0f);
+            float type = Random.Range(0, 3);
 
             if (enemyToSpawn < 5)
             {
-                spawns++;
-                Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Drone2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Drone3, spawnPoint.position, spawnPoint.rotation);
+                }
 
             }
             else if (enemyToSpawn > 8 )
             {
-                spawns++;
-                Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Chopper2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Chopper3, spawnPoint.position, spawnPoint.rotation);
+                }
             }
             else if (enemyToSpawn > 5 && enemyToSpawn <= 8)
             {
-                spawns++;
-                Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Tank2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Tank3, spawnPoint.position, spawnPoint.rotation);
+                }
             }
 
         }
@@ -128,22 +248,62 @@ public class SpawningEnemies : MonoBehaviour
         if (GameManager.playerLevel == 30)
         {
             float enemyToSpawn = Random.Range(0.0f, 10.0f);
+            float type = Random.Range(0, 3);
 
             if (enemyToSpawn <= 3)
             {
-                spawns++;
-                Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemy3, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Drone2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Drone3, spawnPoint.position, spawnPoint.rotation);
 
+                }
             }
             else if (enemyToSpawn > 9)
             {
-                spawns++;
-                Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemies, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Chopper2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Chopper3, spawnPoint.position, spawnPoint.rotation);
+                }
             }
             else if (enemyToSpawn > 3 && enemyToSpawn <= 9)
             {
-                spawns++;
-                Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+                if (type == 0)
+                {
+                    spawns++;
+                    Instantiate(enemy2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 1)
+                {
+                    spawns++;
+                    Instantiate(Tank2, spawnPoint.position, spawnPoint.rotation);
+                }
+                if (type == 2)
+                {
+                    spawns++;
+                    Instantiate(Tank3, spawnPoint.position, spawnPoint.rotation);
+                }
             }
 
         }

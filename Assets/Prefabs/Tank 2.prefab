@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5447117285889195006, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
       propertyPath: m_Name
-      value: Tank
+      value: Tank 2
       objectReference: {fileID: 0}
     - target: {fileID: 5571157804125055962, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
       propertyPath: m_Radius
@@ -177,11 +177,11 @@ PrefabInstance:
     - target: {fileID: 2281264739422126472, guid: 856a383dc526f774cb9e03bb100da8cf, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: b02ae958ff3dbbd4895e94039e823230, type: 2}
+      objectReference: {fileID: 2100000, guid: 28374c723288cdd4c9a3502dee9204bb, type: 2}
     - target: {fileID: 2281264739422126472, guid: 856a383dc526f774cb9e03bb100da8cf, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: b02ae958ff3dbbd4895e94039e823230, type: 2}
+      objectReference: {fileID: 2100000, guid: 28374c723288cdd4c9a3502dee9204bb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

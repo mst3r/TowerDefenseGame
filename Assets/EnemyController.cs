@@ -26,12 +26,20 @@ public class EnemyController : MonoBehaviour
     public bool isFiring = false;
     public bool isAtBase = false;
 
+    public Material Mat1;
+    public Material Mat2;
+    public Material Mat3;
+
     [SerializeField] private HealthBar healthBar;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Renderer objectRenderer = GetComponent<Renderer>();
+
+        
+
         playerBase = GameObject.FindWithTag("HomeBase");
         gamerManager = GameObject.FindWithTag("Manager");
 
@@ -41,6 +49,23 @@ public class EnemyController : MonoBehaviour
         float DamageRange2 = Random.Range(20.0f, 40.0f);
         float DamageRange3 = Random.Range(40.0f, 60.0f);
         //Random numbers for random health increases
+
+        float matToUse = Random.Range(0, 3);
+        //Random number to select material
+
+        if (matToUse == 0)
+        {
+            objectRenderer.material = Mat1;
+        }
+        if (matToUse == 1)
+        {
+            objectRenderer.material = Mat2;
+        }
+        if (matToUse == 2)
+        {
+            objectRenderer.material = Mat3;
+        }
+        //Changes object material randomly when spawned
 
         if (manager.playerLevel >= 5 && manager.playerLevel < 15)
         {

@@ -264,8 +264,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
   enemies: {fileID: 5447117285889195006, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
+  Chopper2: {fileID: 5447117285889195006, guid: a4f45e307fee1704099e0712710f6d93, type: 3}
+  Chopper3: {fileID: 5447117285889195006, guid: bb00575385e1e13419e475a79d2a9f9b, type: 3}
   enemy2: {fileID: 5146051935163493192, guid: 5f0124f02c737a34187d5fabada91a4f, type: 3}
+  Tank2: {fileID: 5146051935163493192, guid: d6acc0f5c5c8b3e478047f32eebcffe2, type: 3}
+  Tank3: {fileID: 5146051935163493192, guid: 5a83ce878c3c69445802fbf4647b445c, type: 3}
   enemy3: {fileID: 7611110380069597721, guid: 069bb8b586239944bb06d4b2b216768b, type: 3}
+  Drone2: {fileID: 7611110380069597721, guid: 22832219508fcf34eadbcc7dac1e7df4, type: 3}
+  Drone3: {fileID: 7611110380069597721, guid: 2ab6ae7e374310547b09f7cf8d9e67a4, type: 3}
   manager: {fileID: 0}
   spawnPoint: {fileID: 6357407097405145221}
   spawnRate: 10
