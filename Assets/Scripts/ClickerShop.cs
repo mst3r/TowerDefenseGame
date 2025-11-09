@@ -11,6 +11,7 @@ public class ClickerShop : MonoBehaviour
     void Start()
     {
         xpManager = FindObjectOfType<XPManager>();
+        gameManager = FindObjectOfType<GameManager>(); 
         PopulateHelpers();
     }
 
@@ -38,12 +39,13 @@ public class ClickerShop : MonoBehaviour
             UpdateButton(idx, btn);
     }
 
+    private GameManager gameManager;
     void UpdateButton(int idx, GameObject btn)
     {
         var h = xpManager.helpers[idx];
         int cost = xpManager.GetHelperCost(idx);
         TextMeshProUGUI[] texts = btn.GetComponentsInChildren<TextMeshProUGUI>();
         texts[1].text = $"Owned: {h.owned}\nCost: {xpManager.FormatXP(cost)} XP";
-        btn.GetComponent<Button>().interactable = xpManager.totalXP >= cost;
+        btn.GetComponent<Button>().interactable = gameManager.points >= cost;
     }
 }

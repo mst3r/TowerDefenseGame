@@ -59,15 +59,19 @@ public class XPManager : MonoBehaviour
         UpdateInterface();
     }
 
-    public void BigClick() => AddXP(clickPower);
-
+    public void BigClick()
+    {
+        AddXP(clickPower);  // +50 XP + 50 Points!
+    }
+    private GameManager gameManager;
     public bool BuyHelper(int index)
     {
         if (index < 0 || index >= helpers.Length) return false;
         Helper h = helpers[index];
         int cost = GetHelperCost(index);
-        if (totalXP < cost) return false;
-        totalXP -= cost;
+        if (gameManager.points < cost) return false;  // ← POINTS!
+
+        gameManager.points -= cost;  // ← SPEND POINTS!
         h.owned++;
         xpPerSecond += h.baseProduction;
         return true;
@@ -93,6 +97,8 @@ public class XPManager : MonoBehaviour
     public void AddXP(int amount)
     {
         totalXP += amount;
+        GameManager.AddPoints();  // ← NEW: +1 POINT per click!
+
         CheckForLevelUp();
         UpdateInterface();
     }
