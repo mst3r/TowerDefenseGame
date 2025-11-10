@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5973269076077553529}
   - component: {fileID: 3115162892882743036}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: 'Ligting '
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 5425317299469905897}
   serializedVersion: 2
   m_LocalRotation: {x: -0.44955137, y: -0.22079769, z: 0.22607161, w: 0.83549005}
-  m_LocalPosition: {x: 37.830452, y: 21.782455, z: -0.5062037}
-  m_LocalScale: {x: -0.1664175, y: 0.54812187, z: 0.13456619}
+  m_LocalPosition: {x: 37.737, y: 21.677, z: -0.5232}
+  m_LocalScale: {x: -0.032000348, y: 0.51194584, z: 0.03998951}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cc20868f02183f444a4fba6f7dcd2bd4, type: 2}
+  - {fileID: 2100000, guid: 3712ec59663323041b3e6bc1814fb68b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7331e935c9076145a9bfd648193e3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 10
+  speed: 50
+  damage: 20
 --- !u!54 &3115162892882743036
 Rigidbody:
   m_ObjectHideFlags: 0

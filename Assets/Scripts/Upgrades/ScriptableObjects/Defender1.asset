@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5beb0c187e8480545be06a28bcdf620f, type: 3}
   m_Name: Defender1
   m_EditorClassIdentifier: 
-  defenderName: Defender1
+  defenderName: Dryad
   defenderPrefab: {fileID: 4143332654238479557, guid: e77d56d5a8b296945a24c433f01950f0, type: 3}
   unlockLevel: 1
   cost: 1
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: acb20850b9e889b4eb61bfc90e556254, type: 3}

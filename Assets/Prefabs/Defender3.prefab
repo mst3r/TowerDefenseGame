@@ -238,10 +238,12 @@ MonoBehaviour:
   range: 20
   fireRate: 1
   maxHealth: 50
+  currentHealth: 0
   defenderType: Griffon
   healthBar: {fileID: 5967298833393514228}
-  bulletPrefab: {fileID: 5425317299469905897, guid: 62b3799832f716a428536e25c48f9471, type: 3}
+  bulletPrefab: {fileID: 5425317299469905897, guid: 0a6b13884b6fa1d4ba1815a653eb21b5, type: 3}
   firePoint: {fileID: 7978440117288050183}
+  upgradeLevel: 0
 --- !u!135 &8367659833892621200
 SphereCollider:
   m_ObjectHideFlags: 0
