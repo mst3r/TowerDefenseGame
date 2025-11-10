@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Crystal Power
   description: More Health
-  unlockLevel: 10
+  unlockLevel: 7
   cost: 15
   targetType: Dryad
   statType: Health

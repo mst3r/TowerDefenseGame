@@ -117,7 +117,7 @@ public class SpawningEnemies : MonoBehaviour
         }
         // Easiest level [Basic enemies spawn and 10% change for fast 
 
-        if (GameManager.playerLevel == 5)
+        if (GameManager.playerLevel == 3)
         {
             float enemyToSpawn = Random.Range(0.0f, 10.0f);
             float type = Random.Range(0, 3);
@@ -181,7 +181,7 @@ public class SpawningEnemies : MonoBehaviour
         }
         //Basic level [Basic enemies 60%, fast enemies 30%, tanks 10%
 
-        if (GameManager.playerLevel == 15)
+        if (GameManager.playerLevel == 5)
         {
             float enemyToSpawn = Random.Range(0.0f, 10.0f);
             float type = Random.Range(0, 3);
@@ -245,7 +245,7 @@ public class SpawningEnemies : MonoBehaviour
         }
         //Medium Level [Basic enemies 20%, fast enemies 50%, tanks 30%
 
-        if (GameManager.playerLevel == 30)
+        if (GameManager.playerLevel == 10)
         {
             float enemyToSpawn = Random.Range(0.0f, 10.0f);
             float type = Random.Range(0, 3);

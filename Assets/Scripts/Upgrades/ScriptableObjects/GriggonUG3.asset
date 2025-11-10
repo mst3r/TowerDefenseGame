@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Protectiom
   description: More Health
-  unlockLevel: 11
+  unlockLevel: 9
   cost: 200
   targetType: Griffon
   statType: Health

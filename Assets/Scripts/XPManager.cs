@@ -36,6 +36,8 @@ public class XPManager : MonoBehaviour
     [Header("Helpers")]
     [SerializeField] public Helper[] helpers;
 
+    public float multiplier = 1.1f;
+
     void Start()
     {
         manager = GameObject.FindWithTag("Manager");

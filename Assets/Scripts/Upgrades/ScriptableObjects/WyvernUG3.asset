@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Tough Scales
   description: More Health
-  unlockLevel: 12
+  unlockLevel: 10
   cost: 200
   targetType: Wyvern
   statType: Health
