@@ -22,11 +22,16 @@ public class Turret : MonoBehaviour, IUpgradeVisual
     public int upgradeLevel = 0;
     private LineRenderer outline;
 
+    [Header("Animation")]
+    private Animator animator;
+
     private void Start()
     {
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(maxHealth, currentHealth);
         CreateOutline();
+        animator = GetComponent<Animator>();
+        if (animator == null) Debug.LogError("No Animator on " + name);
     }
 
     void Update()
@@ -89,14 +94,17 @@ public class Turret : MonoBehaviour, IUpgradeVisual
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
             bullet.SetTarget(_target);
+        animator?.SetTrigger("Attack");
     }
 
-    void TakeDamge(float damage)  // Fixed typo: Damage → Damge (keep as-is if consistent)
+    void TakeDamge(float damage)  
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            animator?.SetTrigger("Death");  // ← TRIGGERS DEATH ANIM!
+            Destroy(gameObject, 2f);  // Wait for death anim (adjust time)
+            return;
         }
         healthBar.UpdateHealthBar(maxHealth, currentHealth);
     }
@@ -111,6 +119,10 @@ public class Turret : MonoBehaviour, IUpgradeVisual
             }
             Destroy(other.gameObject);
         }
+    }
+    public void OnDeathEnd()  // Called by event
+    {
+        Destroy(gameObject);
     }
 
     // ========== VISUAL UPGRADE GLOW ==========

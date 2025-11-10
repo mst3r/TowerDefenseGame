@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 276266581036268520}
   - component: {fileID: 4943092528635294091}
   - component: {fileID: 8367659833892621200}
+  - component: {fileID: -5744662748058474241}
   m_Layer: 0
   m_Name: Defender1
   m_TagString: Defender
@@ -238,9 +239,12 @@ MonoBehaviour:
   range: 10
   fireRate: 1
   maxHealth: 25
+  currentHealth: 0
+  defenderType: Dryad
   healthBar: {fileID: 5967298833393514228}
   bulletPrefab: {fileID: 5425317299469905897, guid: 62b3799832f716a428536e25c48f9471, type: 3}
   firePoint: {fileID: 7978440117288050183}
+  upgradeLevel: 0
 --- !u!135 &8367659833892621200
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -262,6 +266,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.22
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &-5744662748058474241
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143332654238479557}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3373dd2ab3ef6e14380f0c7285e0a09e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5289574782846484508
 GameObject:
   m_ObjectHideFlags: 0
