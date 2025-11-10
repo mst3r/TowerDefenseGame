@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3196654148239365560, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
       propertyPath: health
-      value: 100
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 3196654148239365560, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
       propertyPath: fireRate
@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5447117285889195006, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
       propertyPath: m_Name
-      value: Tank
+      value: Tank 3
       objectReference: {fileID: 0}
     - target: {fileID: 5571157804125055962, guid: f20e9e4801cdb2148b6f5999aca1bd25, type: 3}
       propertyPath: m_Radius
