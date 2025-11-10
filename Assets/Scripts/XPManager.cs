@@ -40,15 +40,22 @@ public class XPManager : MonoBehaviour
     {
         manager = GameObject.FindWithTag("Manager");
         GameManager = manager.GetComponent<GameManager>();
-        if (bigClickButton) bigClickButton.onClick.AddListener(BigClick);
-        InvokeRepeating(nameof(UpdatePassiveXP), 1f, 1f);
+        //if (bigClickButton) bigClickButton.onClick.AddListener(BigClick);
+        //InvokeRepeating(nameof(UpdatePassiveXP), 1f, 1f);
         UpdateLevel();
+        nextLevelsXP = 50;
+        totalXP = 0;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) AddXP(5);
-        totalXP += (int)(xpPerSecond * Time.deltaTime);  // FIXED CAST
+        if (Input.GetMouseButtonDown(0))
+        {
+            AddXP(5);
+        }
+
+        
+        //totalXP += (int)(xpPerSecond * Time.deltaTime);  // FIXED CAST
 
         if (currentlevel == 5) { GameManager.spawnCap = 30.0f; GameManager.playerLevel = currentlevel; }
         if (currentlevel == 15) { GameManager.spawnCap = 40.0f; GameManager.playerLevel = currentlevel; }
@@ -57,21 +64,23 @@ public class XPManager : MonoBehaviour
 
         CheckForLevelUp();
         UpdateInterface();
+
+        //Debug.Log(currentlevel);
     }
 
     public void BigClick()
     {
         AddXP(clickPower);  // +50 XP + 50 Points!
     }
-    private GameManager gameManager;
+    //private GameManager gameManager;
     public bool BuyHelper(int index)
     {
         if (index < 0 || index >= helpers.Length) return false;
         Helper h = helpers[index];
         int cost = GetHelperCost(index);
-        if (gameManager.points < cost) return false;  // ← POINTS!
+        if (GameManager.points < cost) return false;  // ← POINTS!
 
-        gameManager.points -= cost;  // ← SPEND POINTS!
+        GameManager.points -= cost;  // ← SPEND POINTS!
         h.owned++;
         xpPerSecond += h.baseProduction;
         return true;
@@ -107,7 +116,7 @@ public class XPManager : MonoBehaviour
     {
         if (totalXP >= nextLevelsXP)
         {
-            currentlevel++;
+            currentlevel++;   //This line is breaking it
             UpdateLevel();
         }
     }
@@ -115,7 +124,7 @@ public class XPManager : MonoBehaviour
     void UpdateLevel()
     {
         previousLevelsXP = (int)xpCurve.Evaluate(currentlevel);
-        nextLevelsXP = (int)xpCurve.Evaluate(currentlevel + 1);
+        nextLevelsXP = nextLevelsXP * 2; //(int)xpCurve.Evaluate(currentlevel + 1);
         GameManager.ResetSpawnCap();
         UpdateInterface();
     }

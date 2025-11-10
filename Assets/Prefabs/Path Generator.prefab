@@ -126,7 +126,8 @@ MonoBehaviour:
   playerBase: {fileID: 0}
   baseLocation: {fileID: 0}
   ren: {fileID: 0}
-  pathColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  pathColour: {r: 0.4433962, g: 0.4245728, b: 0.4245728, a: 1}
+  path: {fileID: 2100000, guid: d641918a92c0848418390b8e3c400932, type: 2}
 --- !u!54 &-4555386644074192436
 Rigidbody:
   m_ObjectHideFlags: 0

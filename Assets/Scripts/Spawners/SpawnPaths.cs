@@ -12,6 +12,8 @@ public class SpawnPaths : MonoBehaviour
 
     public Color pathColour = Color.grey;
 
+    public Material path;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
